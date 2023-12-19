@@ -8,7 +8,7 @@ print('Enter launch angle from the horizontal')
 thetainput = float(input())
 
 #variables
-
+ 
 theta = radians(thetainput)
 gy = -9.8
 time = 0
