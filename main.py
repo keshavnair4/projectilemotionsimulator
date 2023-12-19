@@ -83,10 +83,44 @@ compute_time(Vinitialy)
 max_height(Vinitialy, time, gy)
 compute_distance(Vinitialx, time)
 
-def time_function(time_length):
-    time_variable = []
-    for i in time_length:
-        time_variable.append(i)
-    print(time_variable)
+#creates a list for every second in time
+time_list = [0]
+for i in range(int(time)):
+    time_list.append(i+1)
 
-print(range(len(str(time))))
+time_list.append(time)
+
+#creates a list of horizontal position for every second in time- to be used in a graph
+horz_dist_list = []
+for j in time_list:
+    h_val = round((Vinitialx*j), 2)
+    horz_dist_list.append(h_val)
+
+#creates a liist of vertical position for every second in time- to be used in a graph
+vert_dist_list = []
+for k in time_list:
+    v_val = round((Vinitialy*k+0.5*gy*k**2), 2)
+    vert_dist_list.append(v_val)
+
+
+
+print(time_list)
+print(horz_dist_list)
+print(vert_dist_list)
+#
+
+plt.plot(horz_dist_list, vert_dist_list, color = 'red', alpha = 0.2, linestyle = 'dashed')
+plt.xlabel('Horizontal Distance (Meters)')
+plt.ylabel('Vertical Distance (Meters)')
+plt.title('Projectile Motion Position Overtime - 1 fps')
+for i in time_list:
+    if i < time:
+        plt.scatter(horz_dist_list[i], vert_dist_list[i], color = 'blue')
+        plt.scatter(horz_dist_list[i-1], vert_dist_list[i-1], color='white')
+        plt.pause(1)
+
+
+
+
+
+plt.show()
